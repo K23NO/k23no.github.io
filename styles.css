@@ -325,32 +325,33 @@ nav {
 }
 
 /* PROJECTS */
-.project__img {
-  width: 200%; /* Ajusta el ancho de la imagen al del contenedor */
-  max-width: 400px;
-  transition: all 300ms;
-}
 .projects__row {
   display: flex; /* Alinea los proyectos horizontalmente */
-  justify-content: space-around; /* Distribuye los proyectos uniformemente a lo largo de la línea */
+  justify-content: space-between; /* Añade espacio entre los proyectos */
   flex-wrap: wrap; /* Permite que los proyectos se envuelvan a la siguiente línea si no hay suficiente espacio */
-}
-
-.project:hover .project__img {
-  filter: brightness(80%);
-  opacity: 0.86;
-  transform: scale(0.9);
+  gap: 20px; /* Espacio entre los proyectos */
+  margin: 0 auto; /* Centra el contenedor de proyectos */
+  max-width: 1200px; /* Ancho máximo del contenedor */
 }
 
 .project {
-  position: relative; /* Permite posicionar la descripción sobre la imagen */
-  width: 33%; /* Ajusta este valor según tus necesidades */
+  position: relative; 
+  flex: 1 1 calc(33.333% - 20px); 
+  box-sizing: border-box; 
   display: flex;
   justify-content: center;
+  margin-bottom: 20px; 
+  max-width: calc(33.333% - 20px); 
+}
+
+.project__img {
+  width: 100%; 
+  max-width: 100%; 
+  transition: all 300ms;
 }
 
 .project__description {
-  position: absolute; /* Posiciona la descripción sobre la imagen */
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
@@ -361,13 +362,29 @@ nav {
   justify-content: center;
   align-items: center;
   opacity: 0; /* Oculta la descripción inicialmente */
-  /*transition: opacity 0.5s;  Transición suave al mostrar la descripción */
+  transition: opacity 0.5s; /* Transición suave al mostrar la descripción */
 }
 
 .project:hover .project__description {
-  transform: scale(1.1);
   opacity: 1; /* Muestra la descripción cuando el puntero del mouse está sobre el proyecto */
 }
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .project {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .project {
+    flex: 1 1 calc(100% - 20px);
+    max-width: calc(100% - 20px);
+  }
+}
+
 
 
 /* contac */
