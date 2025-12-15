@@ -80,18 +80,24 @@ li {
 }
 
 .text--brown {
-  color: #804000;
+  color: #667eea;
+}
+
+.text--purple {
+  color: #667eea;
+  font-weight: 700;
 }
 
 section:nth-child(even) {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 .section__title {
   margin-bottom: 20px;
-  text-align: center; /* Centra el título horizontalmente */
-  display: block; /* Hace que el título sea un bloque */
-  
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  color: #242424;
 }
 
 /* NAVIGATION BAR */
@@ -118,7 +124,7 @@ nav {
 }
 
 .nav__link--anchor-primary {
-  background-color: #6030b1;
+  background-color: #667eea;
   padding: 8px 20px;
   border-radius: 50px;
   color: white;
@@ -126,14 +132,21 @@ nav {
 }
 
 .nav__link--anchor-primary:hover {
-  background-color: #5d3eff;
+  background-color: #764ba2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .personal__logo {
   font-size: 24px;
-  color: #0b098e;
+  color: #667eea;
   margin: 0 12px;
-  font-weight: bold
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.personal__logo:hover {
+  color: #764ba2;
 }
 
 /* ABOUT ME */
@@ -279,127 +292,316 @@ nav {
 
 
 /* SKILLS */
-
-.language__img {
-  width: 100%;
-  max-width: 100px;
-  transition: all 300ms;
+#skills {
+  background-color: white;
+  padding: 80px 0;
 }
-.language:hover .language__img {
-  filter: brightness(80%);
-  opacity: 0.86;
-  transform: scale(0.9);
+
+#skills .section__title {
+  font-size: 48px;
+  margin-bottom: 60px;
+  color: #242424;
+  font-weight: 700;
+}
+
+.language__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
 .language {
-  width: 33%;
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 30px 20px;
   display: flex;
-  justify-content: center;
-  position: relative;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
+
+.language:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  background: white;
+}
+
 .language__img--wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px 16px;
+  padding: 20px;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
-.language__list {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  flex-wrap: wrap;
+.language__img {
+  width: 80px;
+  height: 80px;
+  transition: all 300ms;
+  object-fit: contain;
+}
+
+.language:hover .language__img {
+  filter: brightness(90%);
+  transform: scale(1.1);
 }
 
 .language__name {
-  position: absolute;
-  bottom: 0;
-  transform: scale(0);
-  transition: all 300ms;
-  font-size: 20px;
-  opacity: 0;
-}
-.language:hover .language__name {
-  transform: scale(1);
+  font-size: 16px;
+  font-weight: 600;
+  color: #242424;
+  text-align: center;
   opacity: 1;
+  transform: scale(1);
+  transition: all 300ms;
+}
+
+.language:hover .language__name {
+  color: #667eea;
+}
+
+@media (max-width: 768px) {
+  .language__list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  #skills .section__title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
 }
 
 /* PROJECTS */
-.projects__row {
-  display: flex; /* Alinea los proyectos horizontalmente */
-  justify-content: space-between; /* Añade espacio entre los proyectos */
-  flex-wrap: wrap; /* Permite que los proyectos se envuelvan a la siguiente línea si no hay suficiente espacio */
-  gap: 20px; /* Espacio entre los proyectos */
-  margin: 0 auto; /* Centra el contenedor de proyectos */
-  max-width: 1200px; /* Ancho máximo del contenedor */
+#projects {
+  padding: 80px 0;
+  background-color: #f8f8f8;
+}
+
+#projects .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+#projects .section__title {
+  font-size: 48px;
+  margin-bottom: 60px;
+  color: #242424;
+  font-weight: 700;
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+  margin: 0 auto;
 }
 
 .project {
-  position: relative; 
-  flex: 1 1 calc(33.333% - 20px); 
-  box-sizing: border-box; 
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px; 
-  max-width: calc(33.333% - 20px); 
+  flex-direction: column;
+  height: 100%;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project__img--wrapper {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .project__img {
-  width: 100%; 
-  max-width: 100%; 
-  transition: all 300ms;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  opacity: 0.85;
+}
+
+.project:hover .project__img {
+  transform: scale(1.1);
 }
 
 .project__description {
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0; /* Oculta la descripción inicialmente */
-  transition: opacity 0.5s; /* Transición suave al mostrar la descripción */
+  flex-grow: 1;
+  text-align: left;
 }
 
-.project:hover .project__description {
-  opacity: 1; /* Muestra la descripción cuando el puntero del mouse está sobre el proyecto */
+.project__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #242424;
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
+.project__date {
+  font-size: 13px;
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project__text {
+  font-size: 15px;
+  color: #5a5a5a;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.project__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  background: #f0f0f0;
+  color: #555;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background: #667eea;
+  color: white;
+}
+
+.project__link {
+  display: inline-block;
+  color: #667eea;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.project__link:hover {
+  color: #764ba2;
+  transform: translateX(5px);
+}
 
 /* Responsive adjustments */
-@media (max-width: 1024px) {
-  .project {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
+@media (max-width: 1200px) {
+  .projects__grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  
+  #projects .container {
+    padding: 0 30px;
   }
 }
 
 @media (max-width: 768px) {
-  .project {
-    flex: 1 1 calc(100% - 20px);
-    max-width: calc(100% - 20px);
+  .projects__grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  #projects {
+    padding: 60px 0;
+  }
+  
+  #projects .section__title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+  
+  #projects .container {
+    padding: 0 20px;
+  }
+  
+  .project__img--wrapper {
+    height: 200px;
+  }
+  
+  .project__description {
+    padding: 25px;
   }
 }
 
 
 
-/* contac */
+/* CONTACT */
 #contact {
-  text-align: center; /* Centra el texto */
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+#contact .section__title {
+  color: white;
+  font-size: 42px;
+  margin-bottom: 40px;
+}
+
+.contact {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact a:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
 .socials {
-  display: flex; /* Alinea los iconos de las redes sociales horizontalmente */
-  justify-content: center; /* Centra los iconos de las redes sociales */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .socials img {
-  width: 50px; /* Ajusta este valor según tus necesidades */
-  margin: 0 10px; /* Añade espacio alrededor de los iconos */
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  background: white;
+  padding: 8px;
+}
+
+.socials img:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* FOOTER */
